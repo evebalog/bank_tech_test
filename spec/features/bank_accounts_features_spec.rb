@@ -35,4 +35,17 @@ feature 'bank accounts' do
      expect(current_path).to eq "/bank_accounts/#{current.id}"
     end
   end
+  context 'editing bank accounts' do
+
+  before { BankAccount.create name: 'Current', id: 1 }
+    scenario 'let a user edit a bank account' do
+      visit '/bank_accounts'
+      click_link 'Edit Current'
+      fill_in 'Name', with: 'Current account'
+      click_button 'Update bank account'
+      click_link 'Current account'
+      expect(page).to have_content 'Current account'
+      expect(current_path).to eq '/bank_accounts/1'
+    end
+  end
 end
