@@ -16,6 +16,17 @@ class BankAccountsController < ApplicationController
     @bank_account = BankAccount.find(params[:id])
   end
 
+  def edit
+    @bank_account = BankAccount.find(params[:id])
+  end
+
+  def update
+    @bank_account = BankAccount.find(params[:id])
+    @bank_account.update(bank_account_params)
+
+    redirect_to '/bank_accounts'
+  end
+
   private
 
   def bank_account_params
