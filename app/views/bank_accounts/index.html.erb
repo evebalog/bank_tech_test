@@ -1,2 +1,9 @@
+<% if @bank_accounts.any? %>
+  <% @bank_accounts.each do |bank_account| %>
+    <h2> <%= bank_account.name %> </h2>
+  <% end %>
+<% else %>
 No bank accounts yet
+<% end %>
+
 <a href='#'>Add a new bank account</a>
