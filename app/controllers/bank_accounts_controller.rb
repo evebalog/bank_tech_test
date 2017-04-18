@@ -12,6 +12,10 @@ class BankAccountsController < ApplicationController
     redirect_to '/bank_accounts'
   end
 
+  def show
+    @bank_account = BankAccount.find(params[:id])
+  end
+
   private
 
   def bank_account_params
