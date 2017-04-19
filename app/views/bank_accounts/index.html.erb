@@ -1,25 +1,14 @@
 <% if @bank_accounts.any? %>
   <% @bank_accounts.each do |bank_account| %>
     <h2> <%= link_to bank_account.name, bank_account_path(bank_account) %> </h2>
-    <% @deposits = [] %>
-    <% bank_account.deposits.each do |deposit|%>
-      <%@deposits << deposit.amount%>
-      <%end%>
-      <% @display_deposits_total = @deposits.reduce(0, :+) %>
-      <h4> Deposits total: £<%=@display_deposits_total%></h4>
-      <!-- <h4> Deposits total: <%=@test%> </h4> -->
-      <% @withdrawals = [] %>
-      <% bank_account.withdrawals.each do |withdrawal|%>
-        <%@withdrawals << withdrawal.amount%>
-        <%end%>
-        <% @display_withdrawals_total = @withdrawals.reduce(0, :+) %>
-        <h4> Withdrawals total: £<%=@display_withdrawals_total%></h4>
-        <h4> Balance: £<%= @display_deposits_total - @display_withdrawals_total %>
+    <h4> Deposits total: £<%= bank_account.deposit_total%></h4>
+    <h4> Withdrawals total: £<%=bank_account.withdrawal_total%></h4>
+    <h4> Balance: £<%= bank_account.balance %></h4>
     <ul>
-    <%= link_to "Edit name for #{bank_account.name}", edit_bank_account_path(bank_account) %><br>
-    <%= link_to "Delete #{bank_account.name}", bank_account_path(bank_account), method: :delete %><br>
-    <%= link_to "Make a deposit to #{bank_account.name}", new_bank_account_deposit_path(bank_account) %><br>
-    <%= link_to "Withdraw from #{bank_account.name}", new_bank_account_withdrawal_path(bank_account) %>
+      <li><%= link_to "Edit name for #{bank_account.name}", edit_bank_account_path(bank_account) %></li>
+      <li><%= link_to "Delete #{bank_account.name}", bank_account_path(bank_account), method: :delete %></li>
+      <li><%= link_to "Make a deposit to #{bank_account.name}", new_bank_account_deposit_path(bank_account) %></li>
+      <li><%= link_to "Withdraw from #{bank_account.name}", new_bank_account_withdrawal_path(bank_account) %></li>
     </ul>
   <% end %>
 <% else %>
