@@ -6,13 +6,14 @@ class WithdrawalsController < ApplicationController
 
   def create
     @bank_account = BankAccount.find(params[:bank_account_id])
-    @bank_account.withdrawals.create(deposit_params)
+    @bank_account.withdrawals.create(withdrawal_params)
+    @bank_account.update(balance: @bank_account.balance - withdrawal_params[:amount].to_i)
     redirect_to '/bank_accounts'
   end
 
   private
 
-  def deposit_params
+  def withdrawal_params
     params.require(:withdrawal).permit(:amount)
   end
 end
