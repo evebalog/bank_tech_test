@@ -27,6 +27,13 @@ class BankAccountsController < ApplicationController
     redirect_to '/bank_accounts'
   end
 
+  def destroy
+    @bank_account = BankAccount.find(params[:id])
+    @bank_account.destroy
+    flash[:notice] = "Bank account deleted successfully"
+    redirect_to "/bank_accounts"
+  end
+
   private
 
   def bank_account_params
