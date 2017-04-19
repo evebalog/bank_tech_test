@@ -48,4 +48,17 @@ feature 'bank accounts' do
       expect(current_path).to eq '/bank_accounts/1'
     end
   end
+  context 'deleting bank account' do
+
+  before { BankAccount.create name: 'Current' }
+
+    scenario 'removes a bank account when a user clicks a delete link' do
+      visit '/bank_accounts'
+      click_link 'Delete Current'
+      expect(page).not_to have_content 'Current'
+      expect(page).to have_content 'Bank account deleted successfully'
+    end
+
+end
+
 end
