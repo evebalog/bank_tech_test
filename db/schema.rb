@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418132852) do
+ActiveRecord::Schema.define(version: 20170419102452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,4 +23,14 @@ ActiveRecord::Schema.define(version: 20170418132852) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "deposits", force: :cascade do |t|
+    t.integer  "deposit_amount"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "bank_account_id"
+  end
+
+  add_index "deposits", ["bank_account_id"], name: "index_deposits_on_bank_account_id", using: :btree
+
+  add_foreign_key "deposits", "bank_accounts"
 end

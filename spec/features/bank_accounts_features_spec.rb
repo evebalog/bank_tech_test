@@ -35,21 +35,19 @@ feature 'bank accounts' do
      expect(current_path).to eq "/bank_accounts/#{current.id}"
     end
   end
-  context 'editing bank accounts' do
-
+  context 'editing names of bank accounts' do
   before { BankAccount.create name: 'Current', id: 1 }
-    scenario 'let a user edit a bank account' do
+    scenario 'let a user edit the name of a bank account' do
       visit '/bank_accounts'
-      click_link 'Edit Current'
+      click_link 'Edit name for Current'
       fill_in 'Name', with: 'Current account'
-      click_button 'Update bank account'
+      click_button 'Update bank account name'
       click_link 'Current account'
       expect(page).to have_content 'Current account'
       expect(current_path).to eq '/bank_accounts/1'
     end
   end
   context 'deleting bank account' do
-
   before { BankAccount.create name: 'Current' }
 
     scenario 'removes a bank account when a user clicks a delete link' do
@@ -58,7 +56,5 @@ feature 'bank accounts' do
       expect(page).not_to have_content 'Current'
       expect(page).to have_content 'Bank account deleted successfully'
     end
-
-end
-
+  end
 end
