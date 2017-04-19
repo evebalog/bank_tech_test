@@ -1,25 +1,21 @@
 <h2><%= @bank_account.name %></h2>
 <table border="1">
   <tr>
-    <th>Created At</th>
-    <th>Amount</th>
+    <th>Date</th>
+    <th>Credit</th>
+    <th>Debit</th>
+    <th>Balance</th>
   </tr>
-<% @bank_account.deposits.each do |deposit| %>
+<% [@bank_account.deposits, @bank_account.withdrawals].flatten.sort_by(&:created_at).each do |transaction| %>
 <tr>
-  <td><%=deposit.created_at.strftime("%d/%m/%Y")%></td>
-  <td><%=deposit.deposit_amount%></td>
-</tr>
-<%end%>
-</table>
-<table border="1">
-  <tr>
-    <th>Created At</th>
-    <th>Amount</th>
-  </tr>
-<% @bank_account.withdrawals.each do |withdrawal| %>
-<tr>
-  <td><%=withdrawal.created_at.strftime("%d/%m/%Y")%></td>
-  <td><%=withdrawal.withdrawal_amount%></td>
+  <td><%=transaction.created_at.strftime("%d/%m/%Y")%></td>
+  <% if transaction.is_a? Deposit %>
+  <td><%=transaction.amount%></td>
+  <td></td>
+  <% elsif transaction.is_a? Withdrawal %>
+  <td></td>
+  <td><%=transaction.amount%></td>
+  <%end%>
 </tr>
 <%end%>
 </table>

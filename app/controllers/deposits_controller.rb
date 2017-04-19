@@ -14,6 +14,6 @@ class DepositsController < ApplicationController
   private
 
   def deposit_params
-    params.require(:deposit).permit(:deposit_amount)
+    params.require(:deposit).permit(:amount)
   end
 end

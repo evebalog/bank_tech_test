@@ -3,7 +3,7 @@ module BankAccountsHelper
     @deposits = Deposit.where("bank_account_id = ?", bank_account.id)
     @balance = []
     @deposits.each do |deposit|
-      @balance << deposit.deposit_amount
+      @balance << deposit.amount
     end
     @balance
   end

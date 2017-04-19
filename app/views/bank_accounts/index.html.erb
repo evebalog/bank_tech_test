@@ -3,14 +3,14 @@
     <h2> <%= link_to bank_account.name, bank_account_path(bank_account) %> </h2>
     <% @deposits = [] %>
     <% bank_account.deposits.each do |deposit|%>
-      <%@deposits << deposit.deposit_amount%>
+      <%@deposits << deposit.amount%>
       <%end%>
       <% @display_deposits_total = @deposits.reduce(0, :+) %>
       <h4> Deposits total: £<%=@display_deposits_total%></h4>
       <!-- <h4> Deposits total: <%=@test%> </h4> -->
       <% @withdrawals = [] %>
       <% bank_account.withdrawals.each do |withdrawal|%>
-        <%@withdrawals << withdrawal.withdrawal_amount%>
+        <%@withdrawals << withdrawal.amount%>
         <%end%>
         <% @display_withdrawals_total = @withdrawals.reduce(0, :+) %>
         <h4> Withdrawals total: £<%=@display_withdrawals_total%></h4>
