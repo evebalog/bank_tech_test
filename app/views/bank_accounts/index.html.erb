@@ -1,6 +1,7 @@
 <% if @bank_accounts.any? %>
   <% @bank_accounts.each do |bank_account| %>
-    <h2> <%= link_to bank_account.name, bank_account_path(bank_account) %> </h2>
+    <h2> <%= bank_account.name %> </h2>
+    <h4> <%= link_to "View statement for #{bank_account.name}", bank_account_path(bank_account) %></h4>
     <h4> Deposits total: £<%= bank_account.deposit_total%></h4>
     <h4> Withdrawals total: £<%=bank_account.withdrawal_total%></h4>
     <h4> Balance: £<%= bank_account.balance %></h4>

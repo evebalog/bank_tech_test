@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Bank tech test practise, where you can create bank accounts, withdraw or deposit money into them and see your account statements.
+![Bank statement example](app/assets/images/statement_example.png)
+Please find more details about the specifications at https://github.com/makersacademy/course/blob/master/individual_challenges/bank_tech_test.md
 
-Things you may want to cover:
+* Ruby version: 2.4.0
 
-* Ruby version
+* System dependencies: Rails version: 4.2.8
 
-* System dependencies
+* Run 'bundle install' to get all dependencies from Gemfile
 
-* Configuration
+* Used PostgreSQL database (run 'rake db:migrate' to initialize database)
 
-* Database creation
+* Run 'rspec' to run the test suite
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Deployment to Heroku by running 'heroku create <your_chosen_app_name>'

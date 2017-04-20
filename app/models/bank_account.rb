@@ -5,7 +5,7 @@ class BankAccount < ActiveRecord::Base
   def deposit_total
     deposits.pluck(:amount).reduce(:+)
   end
-  
+
   def withdrawal_total
     withdrawals.pluck(:amount).reduce(:+)
   end
