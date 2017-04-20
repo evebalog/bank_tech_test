@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :deposits
     resources :withdrawals
   end
+
+  root 'bank_accounts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
