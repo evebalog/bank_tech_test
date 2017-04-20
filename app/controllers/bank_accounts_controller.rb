@@ -2,7 +2,6 @@ class BankAccountsController < ApplicationController
   include BankAccountsHelper
   def index
     @bank_accounts = BankAccount.all
-    # @test = @bank_accounts.map{ |bank_account| show_balance(bank_account)}
   end
 
   def new
