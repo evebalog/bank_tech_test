@@ -25,12 +25,12 @@ feature 'bank accounts' do
       expect(current_path).to eq '/bank_accounts'
     end
   end
-  context 'viewing bank accounts' do
+  context 'viewing bank accounts statements' do
   let!(:current){ BankAccount.create(name:'Current') }
 
-    scenario 'lets a user view a bank account' do
+    scenario 'lets a user view the statement of a bank account' do
      visit '/bank_accounts'
-     click_link 'Current'
+     click_link 'View statement for Current'
      expect(page).to have_content 'Current'
      expect(current_path).to eq "/bank_accounts/#{current.id}"
     end
@@ -42,7 +42,7 @@ feature 'bank accounts' do
       click_link 'Edit name for Current'
       fill_in 'Name', with: 'Current account'
       click_button 'Update bank account name'
-      click_link 'Current account'
+      click_link 'View statement for Current account'
       expect(page).to have_content 'Current account'
       expect(current_path).to eq '/bank_accounts/1'
     end

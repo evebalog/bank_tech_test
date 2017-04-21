@@ -1,7 +1,9 @@
-== README
+# README
 
 This is a Bank tech test practise, where you can create bank accounts, withdraw or deposit money into them and see your account statements.
+
 ![Bank statement example](app/assets/images/statement_example.png)
+
 Please find more details about the specifications at https://github.com/makersacademy/course/blob/master/individual_challenges/bank_tech_test.md
 
 * Ruby version: 2.4.0
